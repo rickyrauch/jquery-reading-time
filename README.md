@@ -1,10 +1,17 @@
 # jQuery Reading Time
 ### Simple plugin that calculates the remaining reading time as you scroll down
 
+[Follow us on twitter][]
+[Follow us on twitter]: https://twitter.com/themeskult
+
+
+![image][]
+[image]: https://raw.github.com/themeskult/jquery-reading-time/master/demo.png
+
 ## Usage
-> $(document).ready(function(){
->	$('.post').readingTime();
-> });
+	$(document).ready(function(){
+		$('.post').readingTime();
+	});
 
 ## License 
 
