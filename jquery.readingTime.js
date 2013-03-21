@@ -18,6 +18,7 @@
   Plugin.prototype = {
     init: function () {
       $(window).scroll($.proxy(this.updateTime, this));
+      $('<div id="scrollbubble"></div>').appendTo("body");
     },
     updateTime: function () {
       var total_reading_time = 0,
