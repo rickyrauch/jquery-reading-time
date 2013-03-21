@@ -1,8 +1,9 @@
 ;(function ($, window, document, undefined) {
+  
   var pluginName = "readingTime";
+  
   var defaults = {
-    bubble: '#scrollbubble',
-    post_content: 'article.post'
+    bubble: '#scrollbubble'
   };
 
   function Plugin(element, options) {
@@ -21,7 +22,7 @@
     updateTime: function () {
       var total_reading_time = 0,
         bubble = $(this.options.bubble),
-        post_content = $(this.options.post_content);
+        post_content = $(this.element);
       var viewportHeight = $(window).height(),
        scrollbarHeight = viewportHeight / $(document).height() * viewportHeight,
        progress = $(window).scrollTop() / ($(document).height() - viewportHeight),
