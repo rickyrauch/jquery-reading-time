@@ -31,6 +31,10 @@
       var total_reading_time = this.calculate_total_time_words(post_content, this.element) / 60;
       var total_reading_time_remaining = total_reading_time - (total_reading_time * progress);
 
+      var text = Math.round(total_reading_time_remaining) > 1 ?
+        Math.round(total_reading_time_remaining) + ' minutes left' :
+        '< 1 minute left';
+        
       bubble
         .css('top', distance)
         .text( Math.round(total_reading_time_remaining) + ' minutes left')
