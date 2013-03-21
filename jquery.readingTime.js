@@ -37,7 +37,7 @@
         
       bubble
         .css('top', distance)
-        .text( Math.round(total_reading_time_remaining) + ' minutes left')
+        .text(text)
         .fadeIn(100)  ;
 
       // Fade out the annotation after 1 second of no scrolling.
