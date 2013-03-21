@@ -17,6 +17,7 @@
 
   Plugin.prototype = {
     init: function () {
+      console.log('here');
       $(window).scroll($.proxy(this.updateTime, this));
       $('<div id="scrollbubble"></div>').appendTo("body");
       $('<style>#scrollbubble{display:none;position:fixed;top:0;right:20px;z-index:500;background-color:#000;color:#fff;border-radius:3px;font-family:Georgia;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:3px 8px}#scrollbubble:after{content:" ";position:absolute;top:50%;right:-8px;height:0;width:0;margin-top:-4px;border:4px solid transparent;border-left-color:#000}</style>').appendTo('body');
