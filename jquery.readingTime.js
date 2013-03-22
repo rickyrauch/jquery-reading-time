@@ -30,30 +30,21 @@
        progress = $(window).scrollTop() / ($(document).height() - viewportHeight),
        distance = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - bubble.height() / 2;
       var total_reading_time = this.calculate_total_time_words(post_content, this.element) / 60;
-      var total_reading_time_remaining = Math.round(total_reading_time - (total_reading_time * progress));
+      var total_reading_time_remaining = Math.ceil(total_reading_time - (total_reading_time * progress));
+      var text = '';
 
+      if(total_reading_time_remaining > 1) {
+        text = total_reading_time_remaining + ' minutes left';
+      } else if(progress >= 1) {
+        text = 'Thanks for reading';
+      } else if (total_reading_time_remaining <= 1) {
+        text = 'Less than a minute';
+      }
 
-
-      if (total_reading_time_remaining > 1) {
-      
-        var text = total_reading_time_remaining + ' minutes left';
-      
-      }else if(progress >= 1){
-        console.log(progress);
-
-        var text = 'Thanks for reading';
-
-      }else if(total_reading_time_remaining < 1 ){
-
-        var text = 'Less than a minute';
-
-      };
-
-        
       bubble
         .css('top', distance)
         .text(text)
-        .fadeIn(100)  ;
+        .fadeIn(100);
 
       // Fade out the annotation after 1 second of no scrolling.
       if (this.scroll_timer !== null) {
