@@ -11,7 +11,7 @@
 ## Usage
 	<script type="text/javascript" charset="utf-8" src="//code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="//raw.github.com/themeskult/jquery-reading-time/master/jquery.readingTime.js"></script>
-	<script type="text/javascript" charset="utf-8">
+	<script type="text/javascript">
 	$(document).ready(function(){
 		$('.post').readingTime();
 	});
