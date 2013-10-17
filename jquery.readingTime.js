@@ -25,18 +25,25 @@
       var total_reading_time = 0,
         bubble = $(this.options.bubble),
         post_content = $(this.element);
+      if (post_content.position().top > $(window).scrollTop()) {
+        bubble.fadeOut();
+        return;
+      }
+
       var viewportHeight = $(window).height(),
        scrollbarHeight = viewportHeight / $(document).height() * viewportHeight,
-       progress = $(window).scrollTop() / ($(document).height() - viewportHeight),
-       distance = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - bubble.height() / 2;
+       page_progress = $(window).scrollTop() / ($(document).height() - viewportHeight),
+       progress = $(window).scrollTop() / (post_content.position().top + post_content.height() - viewportHeight),
+       distance = page_progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - bubble.height() / 2;
       var total_reading_time = this.calculate_total_time_words(post_content, this.element) / 60;
       var total_reading_time_remaining = Math.ceil(total_reading_time - (total_reading_time * progress));
       var text = '';
 
       if(total_reading_time_remaining > 1) {
         text = total_reading_time_remaining + ' minutes left';
-      } else if(progress >= 1) {
+      } else if (progress >= 1) {
         text = 'Thanks for reading';
+        $(window).off('scroll', $.proxy(this.updateTime, this));
       } else if (total_reading_time_remaining <= 1) {
         text = 'Less than a minute';
       }
