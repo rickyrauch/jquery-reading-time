@@ -1,9 +1,23 @@
 ;(function ($, window, document, undefined) {
   
   var pluginName = "readingTime";
-  
+
+  var available_lang = new Array('en', 'fr');
+
+  var text_lang = {
+    'en' :
+      {'min_left': ' minutes left',
+      'thanks': 'Thanks for reading',
+      'end_reading': 'Less than a minute'},
+    'fr' :
+      {'min_left': ' minutes restantes',
+      'thanks': 'Merci d\'avoir lu mon article',
+      'end_reading': 'Moins d\'une minute'}
+  };
+
   var defaults = {
-    bubble: '#scrollbubble'
+    bubble: '#scrollbubble',
+    lang: 'en'
   };
 
   function Plugin(element, options) {
@@ -24,6 +38,7 @@
     updateTime: function () {
       var total_reading_time = 0,
         bubble = $(this.options.bubble),
+        lang = ( -1 != $.inArray(this.options.lang, available_lang)) ? this.options.lang : available_lang[0],
         post_content = $(this.element);
       var viewportHeight = $(window).height(),
        scrollbarHeight = viewportHeight / $(document).height() * viewportHeight,
@@ -34,11 +49,11 @@
       var text = '';
 
       if(total_reading_time_remaining > 1) {
-        text = total_reading_time_remaining + ' minutes left';
+        text = total_reading_time_remaining + text_lang[lang].min_left;
       } else if(progress >= 1) {
-        text = 'Thanks for reading';
+        text = text_lang[lang].thanks;
       } else if (total_reading_time_remaining <= 1) {
-        text = 'Less than a minute';
+        text = text_lang[lang].end_reading;
       }
 
       bubble
