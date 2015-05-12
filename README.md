@@ -2,7 +2,7 @@
 #### Simple plugin that calculates the remaining reading time as you scroll down. Highly inspired on Information Architects & Michael & Michael Hue work.
 
 #### [Follow us on twitter][]
-[Follow us on twitter]: https://twitter.com/themeskult
+[Follow me on twitter]: https://twitter.com/rickyrauch
 
 
 ![image][]
